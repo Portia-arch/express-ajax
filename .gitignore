@@ -1,0 +1,5 @@
+# ignore the following files
+
+*.yaml
+*.env
+*node_modules
