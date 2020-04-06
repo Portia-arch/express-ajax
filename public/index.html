@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="./Javascript/buttonFunc.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/mystyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+
+    <button class="open-button" onclick="openForm()">Open Form</button>
+
+    <div class="form-popup" id="myForm">
+
+        <form action="addNewVisitor" method="POST" class="form-container">
+            <h1>Visitors Details</h1>
+
+            <label for="Name"><b>Visitor Name:</b></label>
+            <input type="text" placeholder="Visitor Name" name="visitor_name" id="body" required>
+
+            <br>
+            <label for="name"><b>Assistant Name:</b></label>
+            <input type="text" placeholder="Assistant Name" name="assistant_name" id="body" required>
+
+            <br>
+            <label for="age"><b>Visitor's Age:</b></label>
+            <input type="age" placeholder="Visitor's Age" name="visitor_age" id="body" required>
+
+            <br>
+            <br>
+            <label for="date"><b>Date:</b></label>
+            <input type="date" placeholder="Enter Date" name="date" id="body" required>
+
+            <br>
+            <br>
+            <label for="time"><b>Time:</b></label>
+            <input type="time" placeholder="Enter Time" name="time" id="body" required>
+
+            <br><br>
+            <label for="text"><b>Comments:</b></label>
+            <input type="text" placeholder="Comments" id="body" name="comment">
+
+            <br>
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+    <table id="dataTable">
+        <div class="rows">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Visitor Name:</th>
+                    <th>Assistant Name:</th>
+                    <th>Visitor's Age:</th>
+                    <th>Date:</th>
+                    <th>Time:</th>
+                    <th>Comments:</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </div>
+    </table>
+</body>
+
+</html>

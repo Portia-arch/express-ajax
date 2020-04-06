@@ -8,11 +8,6 @@ const pool = new Pool({
     port: 5432
 });
 
-// pool.connect(function (err, res) {
-//     if (err) console.log(err);
-//      console.log(res)
-// });
-
 const createTable = async function () {
     try {
         const sql = await pool.query(
@@ -57,7 +52,6 @@ const listVisitors = async function () {
     } catch (error) {
         console.log(error);
     }
-    res.status(200).json(results.row)
 };
 
 const deleteVisitor = async function (ID) {
@@ -72,7 +66,6 @@ const deleteVisitor = async function (ID) {
     } catch (error) {
         console.log(error);
     }
-    res.status(200).json(results.row)
 };
 
 const updateVisitor = async function (ID, Name, Assistant, Age, date, Time, Comments) {
@@ -90,43 +83,13 @@ const updateVisitor = async function (ID, Name, Assistant, Age, date, Time, Comm
     } catch (error) {
         console.log(error);
     }
-
-    res.status(200).json(results.rows)
 };
 
-const viewVisitor = async function (ID) {
-    const sql = "SELECT * FROM Visitors WHERE ID=$1";
-    const data = [ID];
-
-    try {
-        results = await pool.query(sql, data);
-
-        return results;
-
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-const dropVisitors = async function () {
-    const sql = "DELETE FROM Visitors";
-
-    try {
-        results = await pool.query(sql);
-        return results.rows;
-
-    } catch (error) {
-        console.log(error);
-    }
-    res.status(200).json(results.row)
-};
 
 module.exports = {
     createTable,
     addNewVisitor,
     updateVisitor,
     listVisitors,
-    deleteVisitor,
-    dropVisitors,
-    viewVisitor
+    deleteVisitor
 };
