@@ -1,37 +1,91 @@
-form.onsubmit = async (event) => {
+function formDisplay() {
+  document.getElementById("option").style.display = "none";
+  document.getElementById("formDisplay").style.display = "block"
+}
+
+let form = document.getElementById("visitorForm");
+form.addEventListener("submit", (event) => {
   event.preventDefault();
+  let fields = ["visitor_name", "ass_name", "visitor_age", "date", "time", "comment"];
 
-  const body = {
-    name: event.target[0].value,
-    assistant: event.target[1].value,
-    age: event.target[2].value,
-    date: event.target[3].value,
-    time: event.target[4].value,
-    comment: event.target[5].value,
-  };
+  let data = new Object();
 
-  submit(body);
-
-  for (let i = 0; i < e.target.length; i++) {
-    e.target[i].value = null;
+  for (let i = 0; i < form.elements.length - 1; i++) {
+    data[fields[i]] = form.elements[i].value;
   }
-};
 
-const submit = async (body) => {
-  const url = "http://127.0.0.1:3000/addNewVisitor";
-
-  const res = await fetch(url, {
-    method: "post",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+  let request = new Request('http://localhost:3005/addNewVisitor', {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    }),
+    body: JSON.stringify(data)
   });
 
-  const data = await res.json();
-  createTableRows([data.visitors]);
+  fetch(request)
+    .then((res) => {
+      return res.json()
+    })
+    .then((json) => {
+      listAllVisits();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+})
 
-  return data;
-};
+function listAllVisits() {
+  document.getElementById("table").innerHTML = "";
+  let request = new Request(`http://localhost:1221/viewVisitors`, { method: 'GET' });
+  fetch(request)
+    .then((res) => { return res.json() })
+    .then((json) => {
+      document.getElementById("table").innerHTML += `<h2 id=h1>All visits</h2><br>
+                                                        <tr>
+                                                        <th>Visitor ID</th>
+                                                        <th>Visitor Name</th>
+                                                        <th>Assistant Name</th>
+                                                        <th>Visitor Age</th>
+                                                        <th>Visit Date</th>
+                                                        <th>Visit Time</th>
+                                                        <th>Comment</th>
+                                                        <th>Action</th>
+                                                        </tr>`
+      for (i = 0; i < json.length; i++) {
+        let data = `<tr>
+                        <td>${json[i].visitorid}</td>
+                        <td>${json[i].visitorname}</td>
+                        <td>${json[i].assistantname}</td>
+                        <td>${json[i].visitorage}</td>
+                        <td>${json[i].visitdate}</td>
+                        <td>${json[i].visittime}</td>
+                        <td>${json[i].comments}</td>
+                        <td>
+                        <button class=delete id=${json[i].visitorid}>Delete</button>
+                        </td>
+                        </tr>`
+        document.getElementById("table").innerHTML += data;
+        let delrteBtn = document.getElementById(`${json[i].visitorid}`)
+        delrteBtn.addEventListener("click", deleteVisit)
+      }
+    })
+}
 
+function deleteVisit(event) {
+  alert(`Event: ${event.target.id}`)
+  let request = new Request(`http://localhost:1221/deleteVisitor${event.target.id}`, { method: 'DELETE' });
+
+  fetch(request)
+    .then((res) => {
+      return res.json()
+    })
+    .then((json) => {
+      listAllVisits();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
 // const addNewVisitor = async ()=> {
 
 // }

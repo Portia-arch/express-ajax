@@ -33,7 +33,7 @@ app.get("/single-page-app", function (req, res) {
 });
 
 createTable();
-// addNewVisitor();
+addNewVisitor();
 
 app.post("/addNewVisitor", async function(req, res) {
   let name = req.body.visitor_name;
@@ -44,8 +44,9 @@ app.post("/addNewVisitor", async function(req, res) {
   let comment = req.body.comment;
 
     const visitor = await addNewVisitor(name, ass_name, age, date, time, comment);
-    res.status(200).json({
+    res.status(200).send({
         status: 'ok',
+        message: 'Visitor Added',
         visitor: visitor[0]
     });
     res.end();

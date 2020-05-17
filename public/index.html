@@ -9,7 +9,13 @@
     <title>Form</title>
 </head>
 
-<body>
+<body id="hello">
+    <div id="option">
+        <button id="addVisitor" onclick="display()">Record new visits</button>
+        <button id="viewVisitors" onclick="listAllVisits()">View all visits</button>
+    </div><br>
+    
+    <div id="display">
 
     <button class="open-button" onclick="openForm()">Open Form</button>
 
@@ -18,7 +24,7 @@
         <form action="addNewVisitor" method="POST" class="form-container">
             <h1>Visitors Details</h1>
 
-            <label for="Name"><b>Visitor Name:</b></label>
+            <label for="name"><b>Visitor Name:</b></label>
             <input type="text" placeholder="Visitor Name" name="visitor_name" id="body" required>
 
             <br>
@@ -44,9 +50,10 @@
             <input type="text" placeholder="Comments" id="body" name="comment">
 
             <br>
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="btn" onclick="submit()">Submit</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
+    </div>
     </div>
     <table id="dataTable">
         <div class="rows">
@@ -66,6 +73,7 @@
             </tbody>
         </div>
     </table>
+    <script rel="Ajax_file" src="Javascript/index.js"></script>
 </body>
 
 </html>
