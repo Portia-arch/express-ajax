@@ -61,7 +61,6 @@ app.get("/view", async function (req, res) {
 
 // View(GET) of a specific object using a param in our path for the
 app.get("/viewVisitor:id", async function (req, res) {
-    // console.log(req.params.id)
 
     let id = req.params.id;
     res.send(await viewVisitor(id));

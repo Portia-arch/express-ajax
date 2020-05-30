@@ -11,17 +11,17 @@
 
 <body id="hello">
     <div id="option">
-        <button id="addVisitor" onclick="display()">Record new visits</button>
+        <button id="getData" onclick="getData()">Record new visits</button>
         <button id="viewVisitors" onclick="listAllVisits()">View all visits</button>
     </div><br>
     
     <div id="display">
+    
+        <!-- <button class="open-button" onclick="openForm()">Open Form</button> -->
+    
+        <div class="form-popup" id="myForm">
 
-    <button class="open-button" onclick="openForm()">Open Form</button>
-
-    <div class="form-popup" id="myForm">
-
-        <form action="addNewVisitor" method="POST" class="form-container">
+        <form id="theForm" action="addNewVisitor" method="POST" class="form-container" autocomplete="off">
             <h1>Visitors Details</h1>
 
             <label for="name"><b>Visitor Name:</b></label>
@@ -53,10 +53,9 @@
             <button type="submit" class="btn" onclick="submit()">Submit</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
-    </div>
-    </div>
-    <table id="dataTable">
-        <div class="rows">
+
+        <div id="results">
+        <table id="dataTable">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -68,11 +67,14 @@
                     <th>Comments:</th>
                 </tr>
             </thead>
-            <tbody>
-                
+            <tbody id="visitors">
             </tbody>
+        </table>
         </div>
-    </table>
+    </div>
+    </div>
+
+
     <script rel="Ajax_file" src="Javascript/index.js"></script>
 </body>
 
