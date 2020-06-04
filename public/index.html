@@ -3,79 +3,76 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="./Javascript/buttonFunc.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/mystyle.css">
+    <script src="http://127.0.0.1:5500/public/Javascript/buttonFunc.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:5500/public/css/mystyle.css">
+    <script type="text/javascript" src="http://127.0.0.1:5500/public/Javascript/index.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
 </head>
 
-<body id="hello">
+<body>
     <div id="option">
-        <button id="getData" onclick="getData()">Record new visits</button>
         <button id="viewVisitors" onclick="listAllVisits()">View all visits</button>
     </div><br>
     
     <div id="display">
     
-        <!-- <button class="open-button" onclick="openForm()">Open Form</button> -->
-    
+        <button class="open-button" onclick="openForm()">Open Form</button>
+        
         <div class="form-popup" id="myForm">
-
-        <form id="theForm" action="addNewVisitor" method="POST" class="form-container" autocomplete="off">
-            <h1>Visitors Details</h1>
-
-            <label for="name"><b>Visitor Name:</b></label>
-            <input type="text" placeholder="Visitor Name" name="visitor_name" id="body" required>
-
-            <br>
-            <label for="name"><b>Assistant Name:</b></label>
-            <input type="text" placeholder="Assistant Name" name="assistant_name" id="body" required>
-
-            <br>
-            <label for="age"><b>Visitor's Age:</b></label>
-            <input type="age" placeholder="Visitor's Age" name="visitor_age" id="body" required>
-
-            <br>
-            <br>
-            <label for="date"><b>Date:</b></label>
-            <input type="date" placeholder="Enter Date" name="date" id="body" required>
-
-            <br>
-            <br>
-            <label for="time"><b>Time:</b></label>
-            <input type="time" placeholder="Enter Time" name="time" id="body" required>
-
-            <br><br>
-            <label for="text"><b>Comments:</b></label>
-            <input type="text" placeholder="Comments" id="body" name="comment">
-
-            <br>
-            <button type="submit" class="btn" onclick="submit()">Submit</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
+            <form action="/addNewVisitor" method="POST" class="form-container">
+                <h1>Visitors Details</h1>
+        
+                <label for="Name"><b>Visitor Name:</b></label>
+                <input type="text" placeholder="Visitor Name" name="visitor_name" id="name" required>
+        
+                <br>
+                <label for="name"><b>Assistant Name:</b></label>
+                <input type="text" placeholder="Assistant Name" name="assistant_name" id="ass_name" required>
+        
+                <br>
+                <label for="age"><b>Visitor's Age:</b></label>
+                <input type="age" placeholder="Visitor's Age" name="visitor_age" id="age" required>
+        
+                <br>
+                <br>
+                <label for="date"><b>Date:</b></label>
+                <input type="date" placeholder="Enter Date" name="date" id="dated" required>
+        
+                <br>
+                <br>
+                <label for="time"><b>Time:</b></label>
+                <input type="time" placeholder="Enter Time" name="time" id="timed" required>
+        
+                <br><br>
+                <label for="text"><b>Comments:</b></label>
+                <input type="text" placeholder="Comments" name="comment" id="commentis">
+        
+                <br>
+                <button type="submit" class="btn">Add Visitor</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
 
         <div id="results">
-        <table id="dataTable">
+        <table id="dataTable" class="table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Visitor Name:</th>
-                    <th>Assistant Name:</th>
-                    <th>Visitor's Age:</th>
+                    <th>Visitor_Name:</th>
+                    <th>Assistant_Name:</th>
+                    <th>Age:</th>
                     <th>Date:</th>
                     <th>Time:</th>
                     <th>Comments:</th>
                 </tr>
             </thead>
-            <tbody id="visitors">
-            </tbody>
+            <tbody id="abavakashi"></tbody>
         </table>
         </div>
     </div>
-    </div>
 
 
-    <script rel="Ajax_file" src="Javascript/index.js"></script>
 </body>
 
 </html>

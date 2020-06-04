@@ -21,7 +21,7 @@ const app = express();
 app.use(express.json());
 
 //serving a static file
-app.use(express.static('public'));
+app.use(express.static('/'));
 
 //body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,15 +33,15 @@ app.get("/single-page-app", function (req, res) {
 });
 
 createTable();
-addNewVisitor();
+// addNewVisitor();
 
-app.post("/addNewVisitor", async function(req, res) {
-  let name = req.body.visitor_name;
-  let ass_name = req.body.assistant_name;
-  let age = req.body.visitor_age;
-  let date = req.body.date;
-  let time = req.body.time;
-  let comment = req.body.comment;
+app.post("/addNewVisitor", async function (req, res) {
+    let name = req.body.visitor_name;
+    let ass_name = req.body.assistant_name;
+    let age = req.body.visitor_age;
+    let date = req.body.date;
+    let time = req.body.time;
+    let comment = req.body.comment;
 
     const visitor = await addNewVisitor(name, ass_name, age, date, time, comment);
     res.status(200).send({

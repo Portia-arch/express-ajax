@@ -1,8 +1,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url(http://127.0.0.1:5500/public/css/ezgif.com-gif-to-webm.gif);
+  background-image: url(http://localhost:3001/gif/ezgif.com-gif-to-webm.gif);
   background-repeat: repeat-x;
-  width: 100%;
 }
 
 * {
@@ -26,7 +25,7 @@ body {
 }
 
 /* The popup form - hidden by default */
-.fout {
+.form-popup {
   display: none;
   position: fixed;
   bottom: 0;
