@@ -24,9 +24,12 @@ async function postData(event) {
             comment: comment
         })
     })
-    let response = await results.json()
-    console.log(response)
-    // .catch((err) => console.log(err))
+    let response = await results.json();
+    console.log(response);
+    createRows([response.visitor]);
+
+    return response;
+    
 }
 
 const createRows = abavakashi => {
@@ -118,3 +121,4 @@ const createColumns = visitor => {
 //     })
 // }
 
+module.exports = {}
